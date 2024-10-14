@@ -1,2 +1,2 @@
 # SCREP
-The code will release here later.
+The code will be released here later.
