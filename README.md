@@ -35,7 +35,7 @@ training_IC50_ge16906_fewshot_metatraining_2loss_onedrug.py
 training_IC50_ge16906_fewshot_metatraining_2loss_mmd.py
 - change parameters: "--dataset"，"--pretrained_path"，"--exp_name" to train sc model on different sc datasets.
 
-*Thanks to [Thang Chu, et al.] for providing excellent code and documentation. This project was inspired by and includes some code from [GraTransDRP] https://github.com/chuducthang77/GraTransDRP.
+*Thanks to [Thang Chu, et al.] for providing excellent code and documentation. This project was inspired by and includes some code from [GraTransDRP] T. Chu, T. T. Nguyen, B. D. Hai, Q. H. Nguyen and T. Nguyen, "Graph Transformer for Drug Response Prediction," in IEEE/ACM Transactions on Computational Biology and Bioinformatics, vol. 20, no. 2, pp. 1065-1072, 1 March-April 2023
 *Thanks to [Gabriela S Kinker, et al] for providing partial datasets [Gabriela S Kinker, et al. Pan-cancer
 single-cell rna-seq identifies recurring programs of cellular heterogeneity. Nature genetics, 52(11):1208–1218, 2020]
 *Thanks to [Junyi Chen, et al.] for providing partial datasets[Chen, J., Wang, X., Ma, A., Wang, Q.E., Liu, B., Li, L., Xu, D. and Ma, Q., 2022. Deep transfer learning of cancer drug responses by integrating bulk and single-cell RNA-seq data. Nature Communications, 13(1), p.6494.]
