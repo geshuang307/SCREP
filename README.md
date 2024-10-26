@@ -12,7 +12,6 @@ Here, we introduce **SCREP**, aims to leverage extensive bulk knowledge in order
 ### Gene name
 The published Panglao dataset was downloaded from https://panglaodb.se/, please put the downloaded data under the path: data/panglao_10000.h5ad
 
-
 ### Single-cell datasets
 Download origion single cell data and and the preprocessed `.pt` files from https://pan.baidu.com/s/1flg13UNGTmOuJDpwU_LjIw (code:SCRE):
 GEO access     |Drug                          |Cell line       |Cancer type                  |No. Res  |No. Sens  | N.A.| Author       |   
@@ -24,37 +23,52 @@ GSE157220      |Gefitinib,Vorinostat,AR-42    |SCC47           |Head and Neck Ca
 GSE157220      |NVP-TAE684,Afatinib,Sorafenib |JHU006          |Head and Neck Cancer         |81       |81        |259  |Kinker et.al  |  
 GSE228154      |Afatinib                      |MDA-MB-468 cells|metastatic breast cancer     |665      |846       |/    |J. M. McFarland|  
 
+Data path:  
+    `data/processed/xxxGSExxx.pt`  - path of processed single cell data  
+    `data/GSExxxxxx`               - path of origional data file(.csv)
 
 ### Pretrain data:
 Download GDSC origion dataset from https://pan.baidu.com/share/init?surl=Z7xiX4TQyaXKydSceNhp0g (code:KDRU)
 
+    `global_data/`                  - path of origional GDSC files  
+    `data/processed/xxxxGDSCxx.pt`  - path of processed bulk data
+
 ### Preprocessing GDSC data: 
 run `preprocess_continue_IC50_ge16906_everydrug.py`, you will get data files in "data/processed": 
-          data/processed/GDSC_norm_all_continueic50_gene16906_index.pt
 
+    - data/processed/GDSC_norm_all_continueic50_gene16906_index.pt
+ 
 ### Preprocessing GDSC data into "sensitive" or "resistant": 
 It is necessary to align the bulk data separately with the sensitive and resistant categories of the sc data. The IC50 should be filtered according to a 5% z-score, resulting in the following bulk data (sensitive: class 1, resistant: class 0):
-          data/processed/GDSC_norm_allclass0_z_score_ic50_gene16906.pt  
-          data/processed/GDSC_norm_allclass1_z_score_ic50_gene16906.pt
+
+    - data/processed/GDSC_norm_allclass0_z_score_ic50_gene16906.pt  
+    - data/processed/GDSC_norm_allclass1_z_score_ic50_gene16906.pt
 
 ### Get indices of cell lines of specific tissue: 
 run `drug_cell_list/tissue.py` and then run `drug_cell_list/drug_tissue_cell_index.py`:
-          drug_cell_list/cell_tissue.json  
-          drug_cell_list/tissue_type.json  
-          drug_cell_list/all_drug_tissue_cell_index.json
+
+    - drug_cell_list/cell_tissue.json  
+    - drug_cell_list/tissue_type.json  
+    - drug_cell_list/all_drug_tissue_cell_index.json
 
 ## Model
-`models`          
-    - gat_gcn_transformer_ge_only_pretrain_meta.py - code of network
+`models`  
+    `gat_gcn_transformer_ge_only_pretrain_meta.py` - code of network
     
 ## Training
 ### Pretrain bulk model:
-run `training_IC50_ge16906_fewshot_metatraining_2loss_onedrug.py`
-- Based on the general GDSC pretrained model: `model_FeatureRelationNetwork_GDSC_norm_continue_ic50.model`, it is the model trained on all drug-cell lines dataset.
+run `training_IC50_ge16906_fewshot_metatraining_2loss_onedrug.py`  
+
+    `model_FeatureRelationNetwork_GDSC_norm_continue_ic50.model` - Based on the general GDSC pretrained model, it is the model trained on all drug-cell lines dataset.
 
 ### Pretrain sc model:
-run `training_IC50_ge16906_fewshot_metatraining_2loss_mmd.py`
-- change parameters: "--dataset"，"--pretrained_path"，"--exp_name" to train sc model on different sc datasets.
+run `training_IC50_ge16906_fewshot_metatraining_2loss_mmd.py`  
+
+    - change parameters to train sc model on different sc datasets:  
+    "--dataset"  
+    "--pretrained_path"  
+    "--exp_name"  
+   
 
 *Thanks to [Thang Chu, et al.] for providing excellent code and documentation. This project was inspired by and includes some code from [GraTransDRP] T. Chu, T. T. Nguyen, B. D. Hai, Q. H. Nguyen and T. Nguyen, "Graph Transformer for Drug Response Prediction," in IEEE/ACM Transactions on Computational Biology and Bioinformatics, vol. 20, no. 2, pp. 1065-1072, 1 March-April 2023  
 *Thanks to [Gabriela S Kinker, et al] for providing partial datasets [Gabriela S Kinker, et al. Pan-cancer
