@@ -13,7 +13,7 @@ Here, we introduce **SCREP**, aims to leverage extensive bulk knowledge in order
 The published Panglao dataset was downloaded from https://panglaodb.se/, please put the downloaded data under the path: data/panglao_10000.h5ad
 
 ### Single-cell datasets
-Download origion single cell data and and the preprocessed `.pt` files from https://pan.baidu.com/s/1flg13UNGTmOuJDpwU_LjIw (code:SCRE):
+Download origion single cell data and and the preprocessed `.pt` files from https://drive.google.com/drive/folders/16RdVuOWXOS15khAOMUvq_jNO5OhP4E9Q?usp=sharing:
 GEO access     |Drug                          |Cell line       |Cancer type                  |No. Res  |No. Sens  | N.A.| Author       |   
 GSE117872_HN120|Cisplatin                     |OSCC            |Oral squamous cell carcinomas|172      |346       |/    |Sharma, et al.|   
 GSE117872_HN137|Cisplatin                     |OSCC            |Oral squamous cell carcinomas|150      |388       |/    |Sharma, et al.|
@@ -28,7 +28,7 @@ Data path:
     `data/GSExxxxxx`               - path of origional data file(.csv)
 
 ### Pretrain data:
-Download GDSC origion dataset from https://pan.baidu.com/share/init?surl=Z7xiX4TQyaXKydSceNhp0g (code:KDRU)
+Download GDSC origion dataset from https://drive.google.com/drive/folders/1UlIAMfxCAFDIge2uIJCjl4zdlY5smqi7?usp=sharing
 
     `global_data/`                  - path of origional GDSC files  
     `data/processed/xxxxGDSCxx.pt`  - path of processed bulk data
@@ -88,15 +88,5 @@ Decreasing the args.updata_lr when the accuracy of meta training is retaining ar
 ```
 ## Citation
 ```
-@article {Ge2024.04.25.591050,
-	author = {Ge, Shuang and Sun, Shuqing and Ren, Yiming and Xu, Huan and Cheng, Qiang and Ren, Zhixiang},
-	title = {SCREP: Towards Single-Cell Drug Response Prediction by Pharmacogenomic Embedding Enhanced Meta-Pretraining and Few-Shot Transfer Learning},
-	elocation-id = {2024.04.25.591050},
-	year = {2024},
-	doi = {10.1101/2024.04.25.591050},
-	publisher = {Cold Spring Harbor Laboratory},
-	URL = {https://www.biorxiv.org/content/early/2024/10/21/2024.04.25.591050},
-	eprint = {https://www.biorxiv.org/content/early/2024/10/21/2024.04.25.591050.full.pdf},
-	journal = {bioRxiv}
-}
+
 ```
